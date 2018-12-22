@@ -405,7 +405,7 @@ function buttonSubmit_Callback(hObject, eventdata, handles)
     
     
     inputLearningRate = getappdata(handles.LearningRate, 'LearningRate');
-    %inputEpoch = getappdata(handles.inputEpoch, 'inputEpoch');
+    inputEpoch = getappdata(handles.inputEpoch, 'inputEpoch');
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     x1=str2double(inputX1);
     x2=str2double(inputX2);
@@ -418,11 +418,9 @@ function buttonSubmit_Callback(hObject, eventdata, handles)
     w3=str2double(inputZ3);
     b3=str2double(inputBias3);
     alpha=str2double(inputLearningRate);
-    epoch=2;
-    %epoch=str2double(inputEpoch);
+    epoch=str2double(inputEpoch);
     l=length(x1);
     pp=1;
-    epo=1;
     while pp<=epoch
         for i=1:l
             disp('iterasi mulai');
@@ -521,22 +519,18 @@ function buttonSubmit_Callback(hObject, eventdata, handles)
                 end
             disp('Iterasi Selesai.......')
             end
-            
-            %disp(y)
-            %disp(t)
+            disp(y)
+            disp(t)
             %if y==t
              %   disp('EPoCH SELESAI')
             %end
             end
             if y==t
                % disp(pp)
-               epoch_ke = ['EPOCH SUDAH SELESAI PADA EPOCH KE - ',num2str(epo)];
-               set(handles.textEpoch,'string',epoch_ke);
-               sprintf('EPOCH SUDAH SELESAI %d',epo)
+               sprintf('EPOCH SUDAH SELESAI %d',pp)
                % disp('EPOCH SELESAI'+pp)
-               pp=3;
             end
-        epo=epo+1;
+    pp=pp+1;
     disp('new epoch started ........................................... ')
     end
     w1
@@ -549,8 +543,6 @@ function buttonSubmit_Callback(hObject, eventdata, handles)
     hasil = ['w1 : ',num2str(w1),', bias 1 : ',num2str(b1),', w2 : ',num2str(w2),', bias 2 : ',num2str(b2)];
     %hasil = ['Bobot baru W1 : ',num2str(wi),'Bobot baru bias 1 : ',num2str(b1),'Bobot baru W2 : ',num2str(w2),'Bobot baru bias 2 : ',num2str(b2)];
     set(handles.showHasil,'string',hasil);
-    
-    
  
 
 
